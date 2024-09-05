@@ -1,0 +1,204 @@
+<head><meta charset="UTF8">
+	<title>Poker en développement</title>
+	<script type="text/javascript" src="js/plateauPoker.js"></script>
+	<script type="text/javascript" src="js/poker.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/pokerStyle.css">
+</head>
+<body style="background-color: #f00;">
+	<a id="linkDBBSB" style="top:5%; float:left;" onclick="newGame()">Nouvelle partie</a>
+	<a id="linkDBBSB" style="top:5%; float:right;" onclick="leave()">Abandonner</a>
+	
+	<script>
+	function newGame(){
+		if(confirm("Si vous abandonnez, la partie en cours sera perdue.\nVoulez-vous vraiment commencer une nouvelle partie ?")){
+			window.location.reload();
+		}
+	}
+	function leave(){
+		if(confirm("Si vous abandonnez, la partie en cours sera perdue.\nVoulez-vous vraiment abandonner et revenir à la page d'acceuil ?")){
+			window.location = 'accueil.html';
+		}
+	}
+	window.onload = function(){
+		var jetons = 200;
+		var bigBlind = 20;
+		var smallBlind = bigBlind/2;
+		var miseP1 = bigBlind;
+		var miseP2 = miseP1;
+		var jetonsP1 = jetons - miseP1;
+		var jetonsP2 = jetons - miseP2;
+		var pot = miseP1 + miseP2;
+		var check = 0;
+		var BB = 0;
+		var Oui = 0;
+
+		function DBBSB(who){
+			BB = who % 2;
+			if(BB == 1){
+				oTapisJeu.divDealer.style.top = "10%";
+				oTapisJeu.divBigBlind.style.top = "10%";
+				oTapisJeu.divSmallBlind.style.top = "85%";
+				pot = bigBlind + smallBlind;
+				miseP1 = smallBlind;
+				jetonsP1 -= smallBlind;
+				miseP2 = bigBlind;
+				jetonsP2 -= bigBlind;
+				innerHTML();
+			} else{
+				oTapisJeu.divDealer.style.top = "85%";
+				oTapisJeu.divBigBlind.style.top = "85%";
+				oTapisJeu.divSmallBlind.style.top = "10%";
+				pot = bigBlind + smallBlind;
+				miseP1 = bigBlind;
+				jetonsP1 -= bigBlind;
+				miseP2 = smallBlind;
+				jetonsP2 -= smallBlind;
+				innerHTML();
+			}
+		}
+		function next(jetons, end){
+			check++;
+			if(check > 0){
+				oPoker.createCard(40, 45, "true", 5);
+				oPoker.createCard(40, 50, "true", 6);
+				oPoker.createCard(40, 55, "true", 7);
+				miseP1 = 0;
+				miseP2 = 0;
+				innerHTML();
+			}
+			if(check > 1){
+				miseP1 = 0;
+				miseP2 = 0;
+				innerHTML();
+				oPoker.createCard(40, 62, "true", 9);
+			}
+			if(check > 2){
+				miseP1 = 0;
+				miseP2 = 0;
+				innerHTML();
+				oPoker.createCard(40, 69, "true", 11);
+			}
+			if(check > 3){
+				miseP1 = 0;
+				miseP2 = 0;
+				innerHTML();
+				var tab = [];
+				oPoker.end();
+				oTapisJeu.end();
+				oTapisJeu.h2DivEnd.innerHTML = ""+oPoker.getBestComb(
+												  	oPoker.getAllPos(
+												  		oPoker.getTabCard([0,2,5,6,7,9,11])
+												  	)
+												)+"";
+
+				Oui++;
+				if(Oui%2 == 0){ jetonsP1 += pot; }
+				else{ jetonsP2 += pot; }
+				oTapisJeu.inputDivEnd.onclick = function(){
+					BB++;
+					delete oTapisJeu;
+					delete oPoker;
+					oTapisJeu = new TapisJeu(jetonsP1, jetonsP2, miseP1, miseP2, pot, bigBlind);
+					oPoker = new Poker();
+					oPoker.manche();
+					check = 0;
+					innerHTML();
+					DBBSB(BB);
+				};
+			}
+			if(end > 3){
+				oPoker.createCard(40, 45, "true", 5);
+				oPoker.createCard(40, 50, "true", 6);
+				oPoker.createCard(40, 55, "true", 7);
+				oPoker.createCard(40, 62, "true", 9);
+				oPoker.createCard(40, 69, "true", 11);
+				miseP1 = jetons;
+				miseP2 = jetons;
+				if(typeof(miseP1 != "number")){ miseP1 = 0; }
+				if(typeof(miseP2 != "number")){ miseP2 = 0; }
+				innerHTML();
+				var tab = [];
+				oPoker.end();
+				oTapisJeu.end();
+				oTapisJeu.h2DivEnd.innerHTML = ""+oPoker.getBestComb(
+												  	oPoker.getAllPos(
+												  		oPoker.getTabCard([0,2,5,6,7,9,11])
+												  	)
+												)+"";
+				Oui++;
+				if(Oui%2 == 0){ jetonsP1 += pot; }
+				else{ jetonsP2 += pot; }
+				oTapisJeu.inputDivEnd.onclick = function(){
+					BB++;
+					delete oTapisJeu;
+					delete oPoker;
+					oTapisJeu = new TapisJeu(jetonsP1, jetonsP2, miseP1, miseP2, pot, bigBlind);
+					oPoker = new Poker();
+					oPoker.manche();
+					check = 0;
+					innerHTML();
+					DBBSB(BB);
+				};
+			}
+		}
+		function innerHTML(){
+			oTapisJeu.h2JetonsP12.innerHTML = ""+jetonsP1+"";
+			oTapisJeu.h2JetonsP22.innerHTML = ""+jetonsP2+"";
+			oTapisJeu.h2MiseP12.innerHTML = ""+miseP1+"";
+			oTapisJeu.h2MiseP22.innerHTML = ""+miseP2+"";
+			oTapisJeu.h2DivPot2.innerHTML = ""+pot+"";
+		}
+		if(jetonsP1 == 0 || jetonsP2 == 0){
+			oPoker.end();
+		}
+
+		oTapisJeu = new TapisJeu(jetonsP1, jetonsP2, miseP1, miseP2, pot, bigBlind);
+		oPoker = new Poker();
+		oPoker.manche();
+		oTapisJeu.input1Td1Tr1TableCRF.onclick = function(){
+			next(0);
+			jetonsP1 -= miseP1;
+			jetonsP2 -= miseP2;
+		}
+		oTapisJeu.input3Td3Tr1TableCRF.onclick = function(){
+			next(parseInt(oTapisJeu.h2MiseP12.value), 4);
+			jetonsP1 -= miseP1;
+			jetonsP2 -= miseP2;
+		}
+		oTapisJeu.input4Td4Tr1TableCRF.onclick = function(){
+			next(parseInt(oTapisJeu.h2MiseP22.value));
+			var storage = miseP1;
+			miseP1 = miseP2;
+			jetonsP1 -= (miseP2 - storage);
+			jetonsP2 -= miseP2;
+		}
+		oTapisJeu.inputConfirm.onclick = function(){
+			next(oTapisJeu.divRaiseBar.value);
+			jetonsP1 -= oTapisJeu.divRaiseBar.value;
+			jetonsP2 -= oTapisJeu.divRaiseBar.value;
+			storMiseP1 = parseInt(oTapisJeu.divRaiseBar.value);
+			storMiseP2 = parseInt(oTapisJeu.divRaiseBar.value);
+			miseP1 += parseInt(oTapisJeu.divRaiseBar.value);
+			miseP2 += parseInt(oTapisJeu.divRaiseBar.value);
+			pot += storMiseP1 + storMiseP2;
+			innerHTML();
+			if(jetonsP1 <= 0){
+				pot += jetonsP1;
+				miseP1 += jetonsP1;
+				jetonsP1 = 0;
+				innerHTML();
+				next(parseInt(oTapisJeu.divRaiseBar.value),5);
+			}
+			if(jetonsP2 <= 0){
+				pot += jetonsP2;
+				miseP2 += jetonsP2;
+				jetonsP2 = 0;
+				innerHTML();
+				next(parseInt(oTapisJeu.divRaiseBar.value),5);
+			}
+		}
+	}
+
+	
+	</script>
+</body>

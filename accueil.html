@@ -1,0 +1,23 @@
+<doctype HTML>
+	<head>
+	<meta charset="UTF8">
+		<title>Accueil poker en développement</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/pokerStyle.css">
+	</head>
+	<body style="background-color: #f00;">
+		<div id="divPlateau" style="color:#fff;text-align:center;min-height:92%;">
+			<h1>Bien le bonjour, utilisateur</h1></br></br>
+			<h2>Ce poker a été développé par Xavier Boucher</h2></br></br>
+			<h2>Pour commencer à jouer, cliquez sur "Nouvelle partie" !</h2></br></br>
+			<form><input class="inputCheck" type="button" onclick="changePoker();" style="cursor:pointer;" value="Nouvelle partie"></form></br></br>
+			<h3>Vous ne connaissez pas le poker "Texas Hold'em" ? Voici les règles !</h3>
+			<form><input class="inputCheck" type="button" onclick="changeRegles();" style="cursor:pointer;" value="Règles"></form></br></br>
+		</div>
+
+		<script type="text/javascript">
+			function changePoker(){ window.location="poker.html"; }
+			function changeRegles(){ window.location="reglesPoker.html"}
+		</script>
+	</body>
+</doctype HTML>

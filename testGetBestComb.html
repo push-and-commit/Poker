@@ -1,0 +1,107 @@
+<script type="text/javascript">
+this.getComb = function(array){
+	var valeur = 0; 
+	// Est-ce que plusieurs cartes ont la même valeur ?
+	var cnt = 0;
+	var freeze = [];
+	var paire1 = [];
+	var paire2 = [];
+	for(var i = 0; i < array.length-1; i++){
+		cnt = 0;
+		if(freeze.indexOf(i) != -1){ continue; }
+		for(var j = i+1; j < array.length; j++){
+			// Si correspondance
+			if(array[i][0] == array[j][0]){
+				cnt++;
+				// Geler la carte qu'on a comparé
+				freeze.push(j);
+			}
+		}
+		if(cnt > 0){
+			if(paire1.length > 0){
+				paire2.push(array[i][0]);
+				paire2.push(cnt);
+			} else{
+				paire1.push(array[i][0]);
+				paire1.push(cnt);
+			}
+		}
+	}
+	if(paire2.length > 0){
+		if(paire1[1] == 2 || paire2[1] == 2){
+			valeur = 425;
+		} else{
+			valeur = 325
+		}
+	} else if(paire1.length > 0){
+		if(paire1[1] == 3){ valeur = 450;}
+		if(paire1[1] == 2){ valeur = 350;}
+		if(paire1[1] == 1){ valeur = 300;}
+	} else{
+		valeur = 275;
+	}
+	// Est-ce que toutes les cartes se suivent ?
+	var a = array[0][0] / 44; var b = array[1][0] / 44; var c = array[2][0] / 44;
+	var d = array[3][0] / 44; var e = array[4][0] / 44;
+	console.log(a);console.log(b);console.log(c);console.log(d);console.log(e);
+	console.log(b - 1); console.log(c - 2); console.log(d - 3); console.log(e - 4);
+	if(a === b - 1 && b === c - 1 && c === d - 1 && d === e - 1){
+		valeur = 375;
+	}
+	// Est-ce que toutes les cartes sont de la même couleur ?
+	if(array[0][1] == array[1][1] && array[0][1] == array[2][1] && array[0][1] == array[3][1] && array[0][1] == array[4][1]){
+		valeur = 400;
+	}
+
+	if(valeur == 400){
+		// Est-ce que toutes les cartes se suivent jusqu'à l'as et sont de la même couleur ?
+		if(a == b - 1 && b == c - 1 && c == d - 1 && d == e - 1){
+			if(array[4][0] == -528){ 
+				valeur = 500;
+			} 
+			else{ 
+				valeur = 475;
+			}
+		}
+	}
+	return valeur;
+};
+this.getBestComb = function(array){
+	var storage = [];
+	// Quel tableau a le plus de point ?
+	for(var j = 0; j < array.length-1; j++){
+		if(getComb(array[j]) > getComb(array[j+1])){
+			storage = array[j+1];
+			array[j+1] = array[j];
+			array[j] = storage;
+		}
+	}
+	getBestCombetComb(array[array.length-1]);
+	// Attribuer des points aux tableaux
+	for(var i = 0; i < array.length; i++){
+		if(getComb(array[i]) ==   0){ this.str = "Vous avez un 3"; }
+		if(getComb(array[i]) ==  25){ this.str = "Vous avez un 4"; }
+		if(getComb(array[i]) ==  50){ this.str = "Vous avez un 5"; }
+		if(getComb(array[i]) ==  75){ this.str = "Vous avez un 6"; }
+		if(getComb(array[i]) == 100){ this.str = "Vous avez un 7"; }
+		if(getComb(array[i]) == 125){ this.str = "Vous avez un 8"; }
+		if(getComb(array[i]) == 150){ this.str = "Vous avez un 9"; }
+		if(getComb(array[i]) == 175){ this.str = "Vous avez un 10"; }
+		if(getComb(array[i]) == 200){ this.str = "Vous avez un Valet"; }
+		if(getComb(array[i]) == 225){ this.str = "Vous avez une Dame"; }
+		if(getComb(array[i]) == 250){ this.str = "Vous avez un Roi"; }
+		if(getComb(array[i]) == 275){ this.str = "Vous avez un As"; }
+		if(getComb(array[i]) == 300){ this.str = "Vous avez une simple paire"; }
+		if(getComb(array[i]) == 325){ this.str = "Vous avez une double paire"; }
+		if(getComb(array[i]) == 350){ this.str = "Vous avez un berlan"; }
+		if(getComb(array[i]) == 375){ this.str = "Vous avez une suite"; }
+		if(getComb(array[i]) == 400){ this.str = "Vous avez une couleur"; }
+		if(getComb(array[i]) == 425){ this.str = "Vous avez un full"; }
+		if(getComb(array[i]) == 450){ this.str = "Vous avez un carré"; }
+		if(getComb(array[i]) == 475){ this.str = "Vous avez une quinte flush"; }
+		if(getComb(array[i]) == 500){ this.str = "Vous avez une quinte flush royale"; }
+	}
+	return this.str;
+}
+console.log(getComb([[-308,-126],[-264,-126],[-220,-189],[-176, -63],[-132,   0]]));
+</script>

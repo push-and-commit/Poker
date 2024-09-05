@@ -1,0 +1,90 @@
+<script>
+
+function getComb(array){
+	var carte = "";
+	var paire = "";
+	var doublePaire = "";
+	var brelan = "";
+	var quinte = "";
+	var couleur = "";
+	var full = "";
+	var carre = "";
+	var quinteFlush = "";
+	var quinteFlushRoyale = "";
+	// Est-ce que toutes les cartes se suivent ?
+	var a = array[0][0] / 44; var b = array[1][0] / 44; var c = array[2][0] / 44;
+	var d = array[3][0] / 44; var e = array[4][0] / 44;
+	if(a == b + 1 && b == c + 1 && c == d + 1 && d == e + 1){
+		quinte = "Vous avez une suite";
+	}
+	// Est-ce que toutes les cartes sont de la même couleur ?
+	if(array[0][1] == array[1][1] && array[0][1] == array[2][1] && array[0][1] == array[3][1] && array[0][1] == array[4][1]){
+		couleur = "Vous avez une couleur";
+	}
+	
+	// Est-ce que toutes les cartes se suivent et sont de la même couleur ?
+	if(couleur != "" && quinte != ""){
+		// Est-ce que toutes les cartes se suivent jusqu'à l'as et sont de la même couleur ?
+		if(array[4][0] == -528){ quinteFlushRoyale = "Vous avez une quinte flush royale"; return quinteFlushRoyale} else{ quinteFlush = "Vous avez une quinte flush"; return quinteFlush;}
+	} else if(couleur != ""){ return couleur; }
+	else if(quinte != ""){ return quinte; }
+	// Est-ce que plusieurs cartes ont la même valeur ?
+	else{
+		var cnt = 0;
+		var freeze = [];
+		var paire1 = [];
+		var paire2 = [];
+		for(var i = 0; i < array.length-1; i++){
+			cnt = 0;
+			if(freeze.indexOf(i) != -1){ continue; }
+			for(var j = i+1; j < array.length; j++){
+				if(array[i][0] == array[j][0]){
+					cnt++;
+					freeze.push(j);
+				}
+			}
+			if(cnt > 0){
+				if(paire1.length > 0){
+					paire2.push(array[i][0]);
+					paire2.push(cnt);
+				} else{
+					paire1.push(array[i][0]);
+					paire1.push(cnt);
+				}
+			}
+		}
+		if(paire2.length > 0){
+			if(paire1[1] == 2 || paire2[1] == 2){
+				full = 'Vous avez un full';
+				return full;
+			} else{
+				doublePaire = "Vous avez une double paire";
+				return doublePaire;
+			}
+		} else if(paire1.length > 0){
+			if(paire1[1] == 3){ carre = "Vous avez un carré"; return carre;}
+			if(paire1[1] == 2){ brelan = "Vous avez un brelan"; return brelan;}
+			if(paire1[1] == 1){ paire = "Vous avez une paire"; return paire;}
+		} else{
+			carte = "Votre meilleure carte est "+oPoker.card.innerHTML+"";
+			return carte;
+		}
+	}
+}
+
+sorted = function(array){
+	var storage = [];
+	for(var i = 0; i < array.length; i++){
+		for(var j = i+1; j < array.length; j++){
+			if(array[i][0] > array[j][0]){
+				storage = array[i];
+				array[i] = array[j];
+				array[j] = storage;
+			}
+		}
+	}
+	return array;
+};
+
+console.log(sorted([[-98, 0],[5, 0],[45,0],[13,0],[-35,0]]));
+</script>

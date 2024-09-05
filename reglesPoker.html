@@ -1,0 +1,158 @@
+<head><meta charset="UTF8">
+	<title>Règles du poker</title>
+	<link rel="stylesheet" type="text/css" href="pokerStyle.css">
+</head>
+<body style="background-color: #f00;">
+	<div id="divPlateau" style="color:#fff;margin-bottom:25px;">
+		<h1 id="first"style="text-align:center; text-decoration:underline;">Règles du poker "Texas Hold'em"</h1>
+		<a href="accueil.html"style="text-indent:80%; text-decoration:underline; cursor:pointer; color:#fff; text-align:center; float:right;">Retour à la page d'accueil</a>
+		<h1 class="h1Regles">But du jeu</h1>
+			<p>
+				Au poker, il faut récolter tous les jetons des adversaires pour pouvoir remporter la partie.</br>
+				Pour récolter des jetons, il faut jouer une partie.</br>
+				Une partie se compose de plusieurs manches.</br>
+				Au début de chaque manche, qu'on appelle <a id="linkDBBSB" href="#preflop">pré-flop</a>, 3 joueurs ont des postes particuliers : </br>
+				<p style="text-indent:3%"><a id="linkDBBSB" href="#D">Le donneur</a>, <a id="linkDBBSB" href="#BBSB">la grosse blind</a> et <a id="linkDBBSB" href="#BBSB">la petite blind</a>.</p>
+				Pour remporter la manche, il faut avoir la <a id="linkDBBSB" href="#main">main</a> la plus forte grâce aux deux cartes qui vous sont distribuées au début de la manche, du <a id="linkDBBSB" href="#flop">flop</a>, du <a id="linkDBBSB" href="#turn">tournant</a> et de la <a id="linkDBBSB" href="#river">rivière</a>.</br>
+				Le joueur qui a la main la plus forte remporte le <a id="linkDBBSB" href="#pot">pot</a> et la manche.</br>
+				Un joueur est éliminé lorsqu'il n'a plus de jetons. La partie continue sans lui. Ce processus continue jusqu'à ce qu'il ne reste plus qu'un seul joueur : le vainceur.
+			</p></br>
+
+
+		<h1 class="h1Regles">Le donneur, la grosse blind, la petite blind et le pot</h1></br>
+			<p>
+				<h2 id="BBSB" style="text-decoration:underline; text-indent:10%">Petite blind, grosse blind</h2>
+				Les blinds sont des mises obligatoires aux joueurs qui sont à ces postes.
+				La grosse blind est égale au double de la petite (petite blind : 25 ► grosse blinde : 50).</br></br>
+				La grosse blind est la mise de base de la manche, pour rejoindre la manche, tous les joueurs doivent miser au moins la grosse blind (grosse blind : 50 jetons ► Pour rejoindre, il faut miser au moins 50 jetons).
+
+				<h2 id="D" style="text-decoration:underline; text-indent:10%">Donneur</h2>
+				On dit que le donneur est "au bouton". Il distribue les cartes tout au long de la manche. Sauf lorsqu'un croupier est présent (Ici, le croupier est intégré). C'est à partir du prochain joueur (dans le sens des aiguilles d'une montre) que la première carte est distribuée.</br></br>
+				Le joueur qui se trouve à côté du donneur est la petite blind, celui encore à côté est la grosse blind.
+
+				<h2 id="pot"style="text-decoration:underline; text-indent:10%">Le pot</h2>
+				Le pot est le nombre de jetons qui ont été misés depuis le début de la manche.
+			</p>
+
+
+		<h1 class="h1Regles">Le pré-flop, le flop, le tournant, la rivière</h1>
+			<p>
+				<h2 id="preflop" style="text-decoration:underline; text-indent:10%">Pré-flop</h2>
+				Au début de la manche, seul les blidns sont misées. Un tour de mise est donc joué pour que les joueurs puissent participer ou non. Les joueurs doivent miser au minimum la grosse blind pour pouvoir rejoindre la manche. Le premier joueur à parler étant le joueur suivant la grosse blind. Ceci est un tour de mise.</br>
+				Si un joueur mise (au minimum la grosse blind), on dit qu'il "relance". Le tour de mise recommence à partir de lui et les autres doivent "suivre" en misant la même mise que lui pour continuer.</br>
+				Si le joueur ne veut pas continuer la manche. Il "se couche" et ne participe plus jusqu'à la prochaine manche.</br>
+				Si un joueur a déjà la mise la plus haute, il peut "passer" et attendre de voir ce que font les autres joueurs.</br>
+				Lorsque tout le monde a la même mise à la fin d'un tour de mise. Le donneur doit distribuer le flop.
+
+				<h2 id="flop" style="text-decoration:underline; text-indent:10%">Flop</h2>
+				Lorsque le tour de pré-flop est terminé, le donneur distribue le flop.</br>
+				Le donneur pose la première carte face cachée sur la table, on dit qu'il "brûle" la carte. Puis il dévoile les trois prochaines cartes.</br>
+				Puis, à nouveau, les joueurs font un tour de mise. Cependant, la petite blind est, cette fois-ci, la première à parler.</br>
+				Lorsque le tour de mise est terminé, le donneur doit distribuer le tournant.
+
+				<h2 id="turn" style="text-decoration:underline; text-indent:10%">Tournant</h2>
+				Lorsque le tour de flop est terminé, le donneur distribue le tournant.</br>
+				Le donneur "brûle" encore la première carte et dévoile la prochaine.</br>
+				Un nouveau tour de mise se joue avec la petite blind parlant en première.</br>
+				Lorsque le tour de mise est terminé, le donneur doit distribuer le tournant.
+
+				<h2 id="river" style="text-decoration:underline; text-indent:10%">Rivière</h2>
+				Le dernier tour est la rivière.</br>
+				Le donneur "brûle" une nouvelle fois la première carte et dévoile la carte suivante.</br>
+				Un dernier tour de mise se joue, la petite blind parlant toujours en première.</br>
+				Lorsque le tour de mise est terminé, les joueurs restants doivent dévoiler leur jeu. Le joueur possédant la meilleure main remporte la manche et le pot.
+			</p>
+			
+
+		<h1 class="h1Regles" id="main">Mains possibles</h1>
+		<p>
+			<h3 style="text-decoration:underline; text-indent:2%;font-size:110%;";>L'ordre des cartes est le suivant :</h3></br>
+			<div class="cardsPlateauVerts" style="left:0%; background-position:-44px 0px;"></div>
+			<div class="cardsPlateauVerts" style="left:4%; background-position:-88px 0px;"></div>
+			<div class="cardsPlateauVerts" style="left:8%; background-position:-132px 0px;"></div>
+			<div class="cardsPlateauVerts" style="left:12%; background-position:-176px 0px;"></div>
+			<div class="cardsPlateauVerts" style="left:16%; background-position:-220px 0px;"></div>
+			<div class="cardsPlateauVerts" style="left:20%; background-position:-264px 0px;"></div>
+			<div class="cardsPlateauVerts" style="left:24%; background-position:-308px 0px;"></div>
+			<div class="cardsPlateauVerts" style="left:28%; background-position:-352px 0px;"></div>
+			<div class="cardsPlateauVerts" style="left:32%; background-position:-396px 0px;"></div>
+			<div class="cardsPlateauVerts" style="left:36%; background-position:-440px 0px;"></div>
+			<div class="cardsPlateauVerts" style="left:40%; background-position:-484px 0px;"></div>
+			<div class="cardsPlateauVerts" style="left:44%; background-position:-528px 0px;"></div>
+			<div class="cardsPlateauVerts" style="left:48%; background-position:0px 0px;"></div></br></br></br></br></br>
+			<h3 style="text-decoration:underline; text-indent:2%;font-size:110%">Il existe différentes mains. Ici, elles sont classées de la plus faible à la plus forte :</h3></br>
+				<h3 style="text-decoration:underline; text-indent:2%;font-size:110%">La paire :</h3>
+				Une paire est le fait d'avoir deux cartes du même chiffre.</br>
+				<div class="cardsPlateauVerts" style="left:0%; background-position:0px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:4%; background-position:0px -63px;"></div></br></br></br></br>
+
+				<h3 style="text-decoration:underline; text-indent:2%;font-size:110%">La double paire :</h3>
+				La double paire est le fait d'avoir deux paire dans une seule main.</br>
+				<div class="cardsPlateauVerts" style="left:0%; background-position:0px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:4%; background-position:0px -63px;"></div>
+				<div class="cardsPlateauVerts" style="left:8%; background-position:-44px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:12%; background-position:-44px -63px;"></div></br></br></br></br>
+				
+				<h3 style="text-decoration:underline; text-indent:2%;font-size:110%">Le brelan :</h3>
+				La brelan est le fait d'avoir trois cartes du même chiffre.</br>
+				<div class="cardsPlateauVerts" style="left:0%; background-position:0px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:4%; background-position:0px -63px;"></div>
+				<div class="cardsPlateauVerts" style="left:8%; background-position:0px -126px;"></div></br></br></br></br>
+
+				<h3 style="text-decoration:underline; text-indent:2%;font-size:110%">La suite :</h3>
+				La suite est la fait d'avoir cinq cartes qui se suivent, peut importe la couleur.</br>
+				<div class="cardsPlateauVerts" style="left:0%; background-position:-220px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:4%; background-position:-264px -63px;"></div>
+				<div class="cardsPlateauVerts" style="left:8%; background-position:-308px -126px;"></div>
+				<div class="cardsPlateauVerts" style="left:12%; background-position:-352px -63px;"></div>
+				<div class="cardsPlateauVerts" style="left:16%; background-position:-396px -189px;"></div></br></br></br>
+				<p style="text-indent:4%;">Remarque : La suite peut commencer par l'As et continuer par un deux.</p>
+				<div class="cardsPlateauVerts" style="left:0%; background-position:0px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:4%; background-position:-44px -63px;"></div>
+				<div class="cardsPlateauVerts" style="left:8%; background-position:-88px -126px;"></div>
+				<div class="cardsPlateauVerts" style="left:12%; background-position:-132px -63px;"></div>
+				<div class="cardsPlateauVerts" style="left:16%; background-position:-176px -189px;"></div></br></br></br></br>
+
+				<h3 style="text-decoration:underline; text-indent:2%;font-size:110%">La couleur :</h3>
+				La couleur est le fait d'avoir cinq cartes de la même couleur.</br>
+				<div class="cardsPlateauVerts" style="left:0%; background-position:-88px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:4%; background-position:-528px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:8%; background-position:-352px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:12%; background-position:-440px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:16%; background-position:-264px 0px;"></div></br></br></br></br>
+
+				<h3 style="text-decoration:underline; text-indent:2%;font-size:110%">Le full :</h3>
+				Le full est le fait d'avoir un brelan et un paire dans la même main.</br>
+				<div class="cardsPlateauVerts" style="left:0%; background-position:-264px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:4%; background-position:-264px -126px;"></div>
+				<div class="cardsPlateauVerts" style="left:8%; background-position:-264px -189px;"></div>
+				<div class="cardsPlateauVerts" style="left:12%; background-position:-440px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:16%; background-position:-440px -63px;"></div></br></br></br></br>
+
+				<h3 style="text-decoration:underline; text-indent:2%;font-size:110%">Le carré :</h3>
+				Le carré est la fait d'avoir quatre cartes du même chiffre.</br>
+				<div class="cardsPlateauVerts" style="left:0%; background-position:0px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:4%; background-position:0px -63px;"></div>
+				<div class="cardsPlateauVerts" style="left:8%; background-position:0px -126px;"></div>
+				<div class="cardsPlateauVerts" style="left:12%; background-position:0px -189px;"></div></br></br></br></br>
+
+				<h3 style="text-decoration:underline; text-indent:2%;font-size:110%">La quinte flush :</h3>
+				La quinte flush est le fait d'avoir une suite de la même couleur.</br>
+				<div class="cardsPlateauVerts" style="left:0%; background-position:-220px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:4%; background-position:-264px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:8%; background-position:-308px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:12%; background-position:-352px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:16%; background-position:-396px 0px;"></div></br></br></br></br>
+
+				<h3 style="text-decoration:underline; text-indent:2%;font-size:110%">La quinte flush royale :</h3>
+				La quinte flush royale est le fait d'avoir une quinte flush entre le 10 et l'As.</br>
+				<div class="cardsPlateauVerts" style="left:0%; background-position:-396px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:4%; background-position:-440px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:8%; background-position:-484px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:12%; background-position:-528px 0px;"></div>
+				<div class="cardsPlateauVerts" style="left:16%; background-position:0px 0px;"></div>
+		</p></br></br></br></br>
+		<a href="accueil.html"style="text-indent:80%; text-decoration:underline; cursor:pointer; color:#fff; text-align:center; float:right;">Retour à la page d'accueil</a>
+		<a href="#first"style="text-indent:80%; text-decoration:underline; cursor:pointer; color:#fff; text-align:center; width:500px">Retour en haut de la page</a></br></br>
+	</div>
+</body>
